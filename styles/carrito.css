@@ -1,0 +1,166 @@
+*{/*Etiqueta de selector globlal (agarra todos los elementos)*/
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/*encabezado*/
+header{
+    margin: auto;
+    background-color: wheat;
+    padding: 3rem;
+}
+
+header h1{
+    text-align: center;
+}
+
+
+
+/*=============================================Productos del carrito=============================================*/
+
+/*-----------Todo el carrito--------*/
+.carrito{
+        max-width: 1000px;
+        padding: 10px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        /*oculto lo que puede quedar fuera del contenedor, borrar?*/
+        contain: paint;
+        background-color: red;
+        gap: 40px;
+}
+/*---------------------------------*/
+
+
+/*--------------Productos----------------*/
+.carrito .carrito-items{
+    display: grid;
+    width: 100%;
+}
+
+.carrito .carrito-items .carrito-item{
+    padding: 20px 10px;
+    margin-bottom: 50px;
+    background-color: blueviolet;
+    border-radius: 2.5px;
+    /*deberia ponerle un max-height?*/
+    display: flex;
+}
+/*---------------------------------------*/
+
+
+/*---------------Cantidad-----------------*/
+.carrito .carrito-items .carrito-item .selector-cantidad{
+    background-color: blue;
+    display: grid;
+    padding: 10px;
+    text-align: center;
+}
+
+
+.carrito .carrito-items .carrito-item .selector-cantidad i{
+    cursor: pointer;
+}
+
+.carrito .carrito-items .carrito-item .selector-cantidad .carrito-item-cantidad{
+    border: none;
+    font-size: 18px;
+    width: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px 0;
+    color: yellow;
+}
+/*-------------------------------------------*/
+
+
+/*--------------------Detalles del producto----------------------*/
+.carrito .carrito-items .carrito-item .item-producto{
+    display: grid;
+    background-color: aqua;
+}
+
+.carrito .carrito-items .carrito-item .item-producto .producto-titulo{
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.carrito .carrito-items .carrito-item .item-producto .producto-detalle{
+    color: black;
+    width: 100%;
+}
+/*-----------------------------------------------------------------*/
+
+
+
+
+/*------------------------------Precio del producto + eliminar producto------------------------------*/
+.carrito .carrito-items .carrito-item .item-precio{
+    background-color: yellow;
+    display: grid;
+}
+
+.carrito .carrito-items .carrito-item .item-precio .precio{
+color:violet;
+}
+
+.carrito .carrito-items .carrito-item .item-precio .btn-eliminar{
+color: red;
+}
+/*---------------------------------------------------------------------------------------------------*/
+
+
+
+/*=============================================Pago=============================================*/
+
+/*--------------Continuar al pago----------------*/
+.carrito .contenedor-pago{
+    background-color: green;
+    padding: 20px 15px;
+    max-height: 200px;
+    position: sticky;
+    border-radius: 2.5px;
+    max-width: 250px;
+}
+/*------------------------------------------------*/
+
+
+/*---------------Detalles de pago-----------------*/
+.carrito .contenedor-pago .total{
+    display: flex;
+    justify-content: space-between;
+}
+
+.carrito .contenedor-pago .total .carrito-precio-total{
+    color: white;
+}
+
+.carrito .contenedor-pago .pago{
+    margin-top: 1rem;
+    gap: 1rem;
+    display: grid;
+}
+/*-----------------------------------------------*/
+
+
+/*------------------Boton pagar------------------*/
+.carrito .contenedor-pago .pago .btn-pagar{
+    border: none;
+    border-radius: 2.5px;
+    background-color: lightgreen;
+    color: white;
+    padding: 4px 0;
+    cursor: pointer;
+}
+/*-----------------------------------------------*/
+
+
+
+/*Queries*/
+@media all and (max-width: 600px) {
+    /* We tell both sidebars to share a row */
+    .carrito {flex-direction: column;}
+  }

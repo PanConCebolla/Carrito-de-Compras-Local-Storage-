@@ -25,7 +25,7 @@ function cargarCarritoDesdeLocalStorage() {
                 <input type="text" value="${producto.cantidad}" class="carrito-item-cantidad" disabled>
                 <i class="fa fa-arrow-down restar-cantidad" aria-hidden="true"></i>
             </div>
-            <img src="${producto.imagenSrc}" alt="${producto.titulo}" width="80px">
+            <img src="${producto.imagenSrc}" alt="${producto.titulo}">
             <div class="item-producto">
                 <span class="producto-titulo">${producto.titulo}</span>
                 <span class="producto-detalle">Me puse la gucci con un short de nike buzo y cadena estoy que goteo</span>
@@ -128,29 +128,30 @@ function actualizarLocalStorage(selector) {
     }
 }
 
-/*-------------------------------------------------------------------------*/
-
 //Función Comprar Carrito
 function comprarCarrito() {
-    //Busca el valor del boton "Continuar al pago" por su clase para luego agregarle un evento
     const botonPagar = document.getElementsByClassName("btn-pagar");
     Array.from(botonPagar).forEach(boton => {
         boton.addEventListener('click', function() {
-            // Verificar si el carrito tiene productos
             const productosCarrito = JSON.parse(localStorage.getItem("item")) || [];
             if (productosCarrito.length === 0) {
-                //Si no tiene productos dentro del carrito, envia error mensaje
                 alert("Error: No hay productos en el carrito.");
                 return;
             }
-            //Si tiene productos dentro del carrito, envia mensaje de éxito
+            
+            // Guardar productos en el historial
+            const historial = JSON.parse(localStorage.getItem("historial")) || [];
+            historial.push(...productosCarrito.map(producto => ({
+                ...producto,
+                fecha: new Date().toLocaleDateString()
+            })));
+            localStorage.setItem("historial", JSON.stringify(historial));
+            
             alert("Su compra se ha realizado con éxito");
 
-            // Limpiar localStorage
-            localStorage.clear();
-
-            // Redirigir a otra página
-           res.send("Pago"); // !!!!!!!!!!!!!!!!!IMPORTANTE elegir la pagina a donde quieres redirigirte!!!!!!!!!!!!!!!!!!!!!
+            // Limpiar carrito y redirigir
+            localStorage.removeItem("item");
+            window.location.href = "historial.html";
         });
     });
 }
